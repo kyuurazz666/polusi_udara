@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Air Pollution & Weather Dynamics</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+  <h1>🌌 Air Pollution–Weather Simulator</h1>
+  <p>Lotka–Volterra Environmental Model</p>
+
+  <form method="POST">
+
+    <label>α (Akumulasi Polusi):
+      <span id="alphaVal"></span>
+    </label>
+    <input class="slider" data-value="alphaVal"
+           type="range" name="alpha" min="0.1" max="2" step="0.1" value="0.8">
+
+    <label>β (Cuaca Mengurangi Polusi):
+      <span id="betaVal"></span>
+    </label>
+    <input class="slider" data-value="betaVal"
+           type="range" name="beta" min="0.1" max="2" step="0.1" value="1.2">
+
+    <label>δ (Polusi Mempengaruhi Cuaca):
+      <span id="deltaVal"></span>
+    </label>
+    <input class="slider" data-value="deltaVal"
+           type="range" name="delta" min="0.1" max="2" step="0.1" value="0.6">
+
+    <label>γ (Reduksi Cuaca):
+      <span id="gammaVal"></span>
+    </label>
+    <input class="slider" data-value="gammaVal"
+           type="range" name="gamma" min="0.1" max="2" step="0.1" value="0.9">
+
+    <button id="simulateBtn" type="submit">🚀 Simulate</button>
+  </form>
+
+  {% if img %}
+    <div class="result">
+      <h3>Simulation Result</h3>
+      <img src="data:image/png;base64,{{ img }}">
+    </div>
+  {% endif %}
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
